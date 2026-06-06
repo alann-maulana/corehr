@@ -43,6 +43,20 @@ export const proxy = proxyAuth((req: NextAuthRequest) => {
     return NextResponse.next();
   }
 
+  // Admin routes — must be logged in, verified, and admin
+  if (pathname.startsWith("/dashboard/admin")) {
+    if (!isLoggedIn) {
+      return NextResponse.redirect(new URL("/login", req.url));
+    }
+    if (userStatus === "unverified") {
+      return NextResponse.redirect(new URL("/waiting-verification", req.url));
+    }
+    const userRole = session?.user?.role as string | undefined;
+    if (userRole !== "admin") {
+      return NextResponse.redirect(new URL("/dashboard", req.url));
+    }
+  }
+
   // Protected routes — must be logged in and verified
   if (!PUBLIC_ROUTES.includes(pathname)) {
     if (!isLoggedIn) {
