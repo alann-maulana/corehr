@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+/* ================================================
+   CoreHR Global Styles
+   MUI + Tailwind CSS integration via @layer
+   ================================================ */
+
+@layer base {
+  :root {
+    --background: #0a0a14;
+    --foreground: #f1f5f9;
+    --primary: #6366f1;
+    --primary-light: #818cf8;
+    --secondary: #8b5cf6;
+    --surface: #13131f;
+    --border: rgba(99, 102, 241, 0.15);
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    min-height: 100dvh;
+    overscroll-behavior: none;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--surface);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 3px;
+  }
+
+  /* Focus styles */
+  :focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+
+  /* Remove default button styles */
+  button {
+    cursor: pointer;
+  }
+}
+
+@layer utilities {
+  .gradient-text {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glass-card {
+    background: rgba(19, 19, 31, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(99, 102, 241, 0.15);
+  }
+
+  .safe-area-padding {
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-top: env(safe-area-inset-top);
+  }
+}
+
+/* MUI overrides via CSS layer to avoid specificity conflicts */
+@layer mui-overrides {
+  .MuiCssBaseline-root {
+    box-sizing: border-box;
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "CoreHR - Manajemen HR",
+  "short_name": "CoreHR",
+  "description": "Sistem Informasi Manajemen Human Resource - Absensi Karyawan",
+  "theme_color": "#0f0f1a",
+  "background_color": "#0f0f1a",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "start_url": "/",
+  "lang": "id",
+  "categories": ["productivity", "business"],
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "screenshots": []
+}
